@@ -20,22 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/auth")
 @AllArgsConstructor
 public class AuthController {
-    private AuthenticationManager authenticationManager;
-    private RoleRepository roleRepository;
-    private PasswordEncoder passwordEncoder;
     private AuthService authService;
-
-
-    @PostMapping("/signup")
-    public ResponseEntity<ApiResponse> signup(@RequestBody UserRegistrationRequest profile){
-        return ResponseEntity.status(HttpStatus.CREATED).body(authService.signup(profile));
-    }
 
     @PostMapping("/login")
     public ResponseEntity<ApiResponse> login(@RequestBody UserRegistrationRequest profile) {
         return ResponseEntity.ok(authService.login(profile));
     }
-
     @PostMapping("logout")
     public String logout() {
         return "logout successful";

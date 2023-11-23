@@ -11,8 +11,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 public class UserRegistrationRequest implements Serializable{
-    private String firstName;
-    private String lastName;
     @NotNull(message = "please pass email")
     @NotBlank(message = "please pass email")
     private String email;

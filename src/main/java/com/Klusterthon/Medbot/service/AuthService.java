@@ -8,5 +8,4 @@ import com.Klusterthon.Medbot.dto.response.UserResponse;
 
 public interface AuthService {
     ApiResponse login(UserRegistrationRequest profile);
-    ApiResponse signup(UserRegistrationRequest profile);
 }

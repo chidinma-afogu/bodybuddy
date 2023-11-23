@@ -28,13 +28,25 @@ public class User extends AuditModel {
     private String lastName;
 
     @Column(nullable = true)
+    private String gender;
+
+    @Column(nullable = true)
+    private String bloodGroup;
+
+    @Column(nullable = true)
+    private int age;
+
+    @Column(nullable = true)
+    private String additionalInfo;
+
+    @Column(nullable = true)
     private String role;
 
     @Column(nullable = false, unique = true,name = "email")
     private String email;
 
     @Size(min = 8)
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)

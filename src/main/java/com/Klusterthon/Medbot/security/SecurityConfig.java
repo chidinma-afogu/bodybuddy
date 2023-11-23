@@ -103,13 +103,13 @@ public class SecurityConfig implements AuthorizationServerConfigurer {
 
                 .authorizeHttpRequests(authorize -> {
                     authorize
-                            .requestMatchers("api/v1/auth/signup").permitAll()
+                            .requestMatchers("api/v1/user/signup").permitAll()
                             .requestMatchers("api/v1/auth/login").permitAll()
                             .requestMatchers("/favicon.ico").permitAll()
                             .requestMatchers("/oauth/token/**").permitAll()
                             .requestMatchers("/oauth/authorize/**").permitAll()
-                            .requestMatchers("api/v1/email/verify/**").permitAll()
-                            .anyRequest().permitAll();
+                            .requestMatchers("api/v1/email/**").permitAll()
+                            .anyRequest().authenticated();
                 })
 
 //                .authenticationProvider(authenticationProvider())

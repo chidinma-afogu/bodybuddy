@@ -2,10 +2,10 @@ package com.Klusterthon.Medbot.security;
 
 import com.Klusterthon.Medbot.exception.CustomException;
 import com.Klusterthon.Medbot.model.User;
+import com.Klusterthon.Medbot.model.enums.RecordStatus;
 import com.Klusterthon.Medbot.repository.UserRepository;
 import com.Klusterthon.Medbot.service.AuthService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
@@ -13,9 +13,7 @@ import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 
-import java.time.LocalDateTime;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -30,7 +28,7 @@ public class CustomTokenEnhancer implements TokenEnhancer {
 
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
-        User user = userRepository.findByEmailIgnoreCase(authentication.getName()).orElseThrow(()->new CustomException("No user found", HttpStatus.BAD_REQUEST));
+        User user = userRepository.findByEmailIgnoreCaseAndStatus(authentication.getName(), RecordStatus.ACTIVE).orElseThrow(()->new CustomException("No user found", HttpStatus.BAD_REQUEST));
 //        CompletableFuture.runAsync(() -> userActivityService.addUserActivity(new UserActivity(user,UserActivities.LOGIN, UserActivities.LOGIN.name())));
 //        if (user.getFailedAttempt() > 0) userService.resetFailedAttempts(user);
 

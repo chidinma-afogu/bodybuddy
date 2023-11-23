@@ -37,15 +37,12 @@ import java.util.regex.Pattern;
 public class AuthServiceImpl implements AuthService {
     private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
     private JwtTokenProvider jwtTokenProvider;
-    private RoleRepository roleRepository;
     private TokenRepository tokenRepository;
-    private EmailService emailService;
     private EmailRepository emailRepository;
     @Override
     public ApiResponse login(UserRegistrationRequest request) {
-        User foundUser = userRepository.findByEmailIgnoreCase(request.getEmail())
+        User foundUser = userRepository.findByEmailIgnoreCaseAndStatus(request.getEmail(),RecordStatus.ACTIVE)
                 .orElseThrow(()->new CustomException("Bad credentials",
                         HttpStatus.BAD_REQUEST));
         Email email = emailRepository.findByUser(foundUser);
@@ -59,6 +56,7 @@ public class AuthServiceImpl implements AuthService {
                 .responseMessage("Token successfully generated")
                 .body(AuthResponseBody.builder()
                         .accessToken(jwtTokenProvider.generateToken(authentication))
+                        .userRole(foundUser.getRole())
                         .build())
                 .build();
         ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.toString(),
@@ -68,65 +66,7 @@ public class AuthServiceImpl implements AuthService {
         return apiResponse;
     }
 
-    @Override
-    public ApiResponse signup(UserRegistrationRequest request) {
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw  new CustomException("Email is already taken", HttpStatus.BAD_REQUEST);
-        }
 
-        if(request.getEmail().equals(Strings.EMPTY)){
-            throw  new CustomException("Email should be passed", HttpStatus.BAD_REQUEST);
-        }
-
-        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-        if (!isInputValid(request.getEmail(), emailRegex)) {
-            throw  new CustomException("Invalid email address", HttpStatus.BAD_REQUEST);
-        }
-
-        User user = User.builder()
-                .email(request.getEmail().toLowerCase())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .status(RecordStatus.INACTIVE)
-                .build();
-        Role role = roleRepository.findByRoleName("ROLE_USER");
-        user.setRoles(Collections.singleton(role));
-        user.setRole(role.getRoleName());
-        userRepository.save(user);
-
-        Email email = Email.builder()
-                .email(user.getEmail())
-                .status(EmailStatus.NOT_VERIFIED)
-                .token(null)
-                .user(user)
-                .build();
-        emailRepository.save(email);
-
-        UserResponse userResponse = UserResponse.builder()
-                .responseCode(String.valueOf(HttpStatus.CREATED))
-                .responseMessage("User created successfully")
-                .body(UserResponseBody.builder()
-                        .id(user.getId())
-                        .email(user.getEmail())
-                        .status(user.getStatus())
-                        .createdBy(user.getEmail())
-                        .createdAt(user.getCreatedAt())
-                        .build())
-                .build();
-        try {
-            String subject = "Email Verification";
-            String text = "Please click the link below to verify your email";
-            EmailRequest emailRequest = EmailRequest.builder()
-                    .userEmail(user.getEmail())
-                    .subject(subject)
-                    .text(text)
-                    .build();
-            emailService.sendVerificationLink(emailRequest);
-        }catch (Exception e){
-            throw new CustomException("Error sending email"+e,HttpStatus.BAD_REQUEST);
-        }
-        return new ApiResponse(HttpStatus.CREATED.toString(),
-                userResponse.getResponseMessage(),userResponse.getBody(),HttpStatus.CREATED);
-    }
     private void saveUserToken(Authentication authentication, User foundUser) {
         var token = Token.builder()
                 .user(foundUser)
@@ -150,10 +90,6 @@ public class AuthServiceImpl implements AuthService {
         tokenRepository.saveAll(validUserTokens);
     }
 
-    private boolean isInputValid(String input, String regex) {
-        return Pattern.compile(regex)
-                .matcher(input)
-                .matches();
-    }
+
 
 }

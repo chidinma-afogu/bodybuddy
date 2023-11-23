@@ -13,6 +13,7 @@ import com.Klusterthon.Medbot.repository.UserRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.MailException;
@@ -31,6 +32,7 @@ public class EmailServiceImpl implements EmailService {
     private UserRepository userRepository;
     private EmailRepository emailRepository;
 
+    @Autowired
     public EmailServiceImpl(JavaMailSender mailSender, UserRepository userRepository, EmailRepository emailRepository) {
         this.mailSender = mailSender;
         this.userRepository = userRepository;
@@ -76,7 +78,7 @@ public class EmailServiceImpl implements EmailService {
         if (!token.equals(email.getToken())) {
             throw new CustomException("Invalid token", HttpStatus.BAD_REQUEST);
         }
-        User user = userRepository.findByEmail(email.getEmail());
+        User user = userRepository.findByEmailAndStatus(email.getEmail(),RecordStatus.INACTIVE);
         user.setStatus(RecordStatus.ACTIVE);
         email.setStatus(EmailStatus.VERIFIED);
         userRepository.save(user);

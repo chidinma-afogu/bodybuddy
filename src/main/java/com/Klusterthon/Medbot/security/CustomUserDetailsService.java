@@ -1,6 +1,7 @@
 package com.Klusterthon.Medbot.security;
 
 import com.Klusterthon.Medbot.model.User;
+import com.Klusterthon.Medbot.model.enums.RecordStatus;
 import com.Klusterthon.Medbot.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmailIgnoreCase(email)
+        User user = userRepository.findByEmailIgnoreCaseAndStatus(email, RecordStatus.ACTIVE)
                 .orElseThrow(() -> new UsernameNotFoundException("User with provided credentials not found!" + email));
 
         //retrieve roles associated with the user
