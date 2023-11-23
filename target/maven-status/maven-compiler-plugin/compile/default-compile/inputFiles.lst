@@ -3,6 +3,7 @@ C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbo
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\security\JwtAuthenticationEntryPoint.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\service\serviceImpl\AuthServiceImpl.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\service\UserService.java
+C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\dto\request\UpdateUserRequest.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\MedbotApplication.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\email\service\EmailService.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\security\JwtTokenProvider.java
@@ -15,6 +16,8 @@ C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbo
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\exception\CustomAccessDeniedException.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\security\SecurityConfig.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\email\dto\EmailRequest.java
+C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\controller\UserController.java
+C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\dto\response\UpdateUserResponse.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\model\AuditModel.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\exception\ResourceNotFoundException.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\dto\response\UserResponseBody.java

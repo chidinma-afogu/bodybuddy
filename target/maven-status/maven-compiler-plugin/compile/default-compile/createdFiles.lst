@@ -1,5 +1,6 @@
 com\Klusterthon\Medbot\security\token\TokenType.class
 com\Klusterthon\Medbot\dto\response\UserResponse.class
+com\Klusterthon\Medbot\dto\response\UpdateUserResponse$UpdateUserResponseBuilder.class
 com\Klusterthon\Medbot\dto\request\UserRegistrationRequest$UserRegistrationRequestBuilder.class
 com\Klusterthon\Medbot\service\serviceImpl\UserServiceImpl.class
 com\Klusterthon\Medbot\exception\ExceptionHandler.class
@@ -10,6 +11,7 @@ com\Klusterthon\Medbot\email\service\EmailServiceImpl.class
 com\Klusterthon\Medbot\dto\response\ApiResponse.class
 com\Klusterthon\Medbot\security\token\Token.class
 com\Klusterthon\Medbot\exception\CustomAccessDeniedException.class
+com\Klusterthon\Medbot\controller\UserController.class
 com\Klusterthon\Medbot\service\UserService.class
 com\Klusterthon\Medbot\security\SecurityConfig.class
 com\Klusterthon\Medbot\MedbotApplication.class
@@ -23,12 +25,14 @@ com\Klusterthon\Medbot\model\enums\RecordStatus.class
 com\Klusterthon\Medbot\repository\RoleRepository.class
 com\Klusterthon\Medbot\exception\CustomException.class
 com\Klusterthon\Medbot\security\CustomAccessTokenConverter.class
+com\Klusterthon\Medbot\dto\request\UpdateUserRequest.class
 com\Klusterthon\Medbot\model\enums\EmailStatus.class
 com\Klusterthon\Medbot\model\User$UserBuilder.class
 com\Klusterthon\Medbot\dto\response\AuthResponseBody.class
 com\Klusterthon\Medbot\security\CustomUserDetailsService.class
 com\Klusterthon\Medbot\dto\response\AuthResponse.class
 com\Klusterthon\Medbot\email\entity\Email.class
+com\Klusterthon\Medbot\dto\request\UpdateUserRequest$UpdateUserRequestBuilder.class
 com\Klusterthon\Medbot\controller\AuthController.class
 com\Klusterthon\Medbot\model\User.class
 com\Klusterthon\Medbot\security\JwtTokenProvider.class
@@ -51,6 +55,7 @@ com\Klusterthon\Medbot\email\entity\Email$EmailBuilder.class
 com\Klusterthon\Medbot\exception\CustomUniqueConstraintViolationException.class
 com\Klusterthon\Medbot\exception\GlobalExceptionHandler.class
 com\Klusterthon\Medbot\controller\EmailController.class
+com\Klusterthon\Medbot\dto\response\UpdateUserResponse.class
 com\Klusterthon\Medbot\security\JwtAuthenticationEntryPoint.class
 com\Klusterthon\Medbot\model\Role$RoleBuilder.class
 com\Klusterthon\Medbot\service\serviceImpl\AuthServiceImpl.class
