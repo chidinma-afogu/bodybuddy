@@ -24,7 +24,6 @@ com\Klusterthon\Medbot\service\AuthService.class
 com\Klusterthon\Medbot\model\enums\RecordStatus.class
 com\Klusterthon\Medbot\repository\RoleRepository.class
 com\Klusterthon\Medbot\exception\CustomException.class
-com\Klusterthon\Medbot\security\CustomAccessTokenConverter.class
 com\Klusterthon\Medbot\dto\request\UpdateUserRequest.class
 com\Klusterthon\Medbot\model\enums\EmailStatus.class
 com\Klusterthon\Medbot\model\User$UserBuilder.class
@@ -48,7 +47,6 @@ com\Klusterthon\Medbot\security\token\Token$TokenBuilder.class
 com\Klusterthon\Medbot\dto\request\UserRegistrationRequest.class
 com\Klusterthon\Medbot\dto\response\UserResponseBody$UserResponseBodyBuilder.class
 com\Klusterthon\Medbot\security\JwtAuthenticationFilter.class
-com\Klusterthon\Medbot\security\CustomTokenEnhancer.class
 com\Klusterthon\Medbot\exception\ResourceAlreadyExistException.class
 com\Klusterthon\Medbot\model\Role.class
 com\Klusterthon\Medbot\email\entity\Email$EmailBuilder.class
@@ -63,5 +61,6 @@ com\Klusterthon\Medbot\email\dto\VerifyEmailResponse.class
 com\Klusterthon\Medbot\dto\response\UserResponseBody.class
 com\Klusterthon\Medbot\controller\TestController.class
 com\Klusterthon\Medbot\email\repository\EmailRepository.class
+com\Klusterthon\Medbot\config\SwaggerConfig.class
 com\Klusterthon\Medbot\email\dto\EmailRequest.class
 com\Klusterthon\Medbot\dto\response\AuthResponse$AuthResponseBuilder.class

@@ -27,24 +27,24 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
-import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
-import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.error.DefaultWebResponseExceptionTranslator;
-import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
+//import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
+//import org.springframework.security.oauth2.common.exceptions.OAuth2Exception;
+//import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
+//import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurer;
+//import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+//import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+//import org.springframework.security.oauth2.provider.error.DefaultWebResponseExceptionTranslator;
+//import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-@Configuration(proxyBeanMethods = true)
+@Configuration
 @EnableMethodSecurity
 @EnableWebSecurity
 @Slf4j
-public class SecurityConfig implements AuthorizationServerConfigurer {
+public class SecurityConfig {
     private CustomUserDetailsService customUserDetailsService;
     private JwtAuthenticationEntryPoint authenticationEntrypoint;
     private JwtAuthenticationFilter authenticationFilter;
@@ -66,14 +66,14 @@ public class SecurityConfig implements AuthorizationServerConfigurer {
         this.response = response;
         this.userRepository=userRepository;
     }
-    @Value("${spring.security.oauth2.client.registration.google.client-id}")
-    private String clientId;
-
-   @Value("${spring.security.oauth2.client.registration.google.client-secret}")
-    private String clientSecret;
-
-   @Value("${spring.security.oauth2.client.registration.google.redirect-uri}")
-    private String redirectUri;
+//    @Value("${spring.security.oauth2.client.registration.google.client-id}")
+//    private String clientId;
+//
+//   @Value("${spring.security.oauth2.client.registration.google.client-secret}")
+//    private String clientSecret;
+//
+//   @Value("${spring.security.oauth2.client.registration.google.redirect-uri}")
+//    private String redirectUri;
 
     @Bean
     public static PasswordEncoder passwordEncoder() {
@@ -109,6 +109,7 @@ public class SecurityConfig implements AuthorizationServerConfigurer {
                             .requestMatchers("/oauth/token/**").permitAll()
                             .requestMatchers("/oauth/authorize/**").permitAll()
                             .requestMatchers("api/v1/email/**").permitAll()
+                            .requestMatchers("/swagger-ui/**").permitAll()
                             .anyRequest().authenticated();
                 })
 
@@ -132,35 +133,35 @@ public class SecurityConfig implements AuthorizationServerConfigurer {
         return httpSecurity.build();
     }
 
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-        oauthServer.checkTokenAccess("isAuthenticated()");
-
-    }
-
-    @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
-                .withClient(clientId)
-                .secret(passwordEncoder().encode(clientSecret))
-                .authorizedGrantTypes("refresh_token", "authorization_code", "password", "client_credentials")
-                .scopes("read", "write")
-                .autoApprove(true)
-                .redirectUris(redirectUri);
-    }
-
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoint) throws Exception {
-        AuthenticationConfiguration authenticationConfiguration = new AuthenticationConfiguration();
-        endpoint
-                .pathMapping("/oauth/token", "/api/v1/authenticate")
-//                .pathMapping("/oauth/check_token", "/api/v1/validate-token")
-                .authenticationManager(authenticationConfiguration.getAuthenticationManager())
-                .userDetailsService(userDetailsService)
-                .tokenEnhancer(endpoint.getTokenEnhancer())
-                .tokenStore(endpoint.getTokenStore());
-//                .exceptionTranslator(webResponseExceptionTranslator());
-    }
+//    @Override
+//    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+//        oauthServer.checkTokenAccess("isAuthenticated()");
+//
+//    }
+//
+//    @Override
+//    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+//        clients.inMemory()
+//                .withClient(clientId)
+//                .secret(passwordEncoder().encode(clientSecret))
+//                .authorizedGrantTypes("refresh_token", "authorization_code", "password", "client_credentials")
+//                .scopes("read", "write")
+//                .autoApprove(true)
+//                .redirectUris(redirectUri);
+//    }
+//
+//    @Override
+//    public void configure(AuthorizationServerEndpointsConfigurer endpoint) throws Exception {
+//        AuthenticationConfiguration authenticationConfiguration = new AuthenticationConfiguration();
+//        endpoint
+//                .pathMapping("/oauth/token", "/api/v1/authenticate")
+////                .pathMapping("/oauth/check_token", "/api/v1/validate-token")
+//                .authenticationManager(authenticationConfiguration.getAuthenticationManager())
+//                .userDetailsService(userDetailsService)
+//                .tokenEnhancer(endpoint.getTokenEnhancer())
+//                .tokenStore(endpoint.getTokenStore());
+////                .exceptionTranslator(webResponseExceptionTranslator());
+//    }
 
 //    @Bean
 //    public WebResponseExceptionTranslator webResponseExceptionTranslator() {
