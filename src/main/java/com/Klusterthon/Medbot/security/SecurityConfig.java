@@ -92,9 +92,9 @@ public class SecurityConfig {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
 
-                .exceptionHandling(e -> e
-                        .authenticationEntryPoint(authenticationEntrypoint)
-                )
+//                .exceptionHandling(e -> e
+//                        .authenticationEntryPoint(authenticationEntrypoint)
+//                )
 
                 .sessionManagement((sessionManagement) ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -109,7 +109,7 @@ public class SecurityConfig {
                             .requestMatchers("/oauth/token/**").permitAll()
                             .requestMatchers("/oauth/authorize/**").permitAll()
                             .requestMatchers("api/v1/email/**").permitAll()
-                            .requestMatchers("/swagger-ui/**").permitAll()
+                            .requestMatchers("swagger-ui/**").permitAll()
                             .anyRequest().authenticated();
                 })
 

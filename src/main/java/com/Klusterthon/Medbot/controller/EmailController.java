@@ -23,7 +23,7 @@ public class EmailController {
             return emailServiceImpl.verifyEmail(token);
         }
         @PostMapping("")
-        public boolean sendVerificationLink(EmailRequest request) {
+        public boolean sendVerificationLink(@RequestBody EmailRequest request) {
             return emailServiceImpl.sendVerificationLink(request);
         }
 

@@ -49,7 +49,7 @@ public class EmailServiceImpl implements EmailService {
                 .orElseThrow(() -> new CustomException("Email does not exist", HttpStatus.BAD_REQUEST));
         email.setToken(verificationToken);
         emailRepository.save(email);
-        String baseUrl = "http://localhost:8080";
+        String baseUrl = "https://bodybuddy.onrender.com";
 
         String verificationLink = baseUrl + "/api/v1/email?token=" + verificationToken;
         try {
