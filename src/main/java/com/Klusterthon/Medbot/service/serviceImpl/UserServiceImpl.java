@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ApiResponse signup(UserRegistrationRequest request) {
-        if (userRepository.existsByEmail(request.getEmail())) {
+        if (userRepository.existsByEmailAndStatus(request.getEmail(),RecordStatus.ACTIVE)) {
             throw  new CustomException("Email is already taken", HttpStatus.BAD_REQUEST);
         }
 
@@ -182,6 +182,9 @@ public class UserServiceImpl implements UserService {
     public ApiResponse deleteUser(Long id) {
         User user = getUser(id);
         user.setStatus(RecordStatus.DELETED);
+        Email email = emailRepository.findByUser(user);
+        email.setStatus(EmailStatus.NOT_VERIFIED);
+        emailRepository.save(email);
         userRepository.save(user);
         return ApiResponse.builder()
                 .code(HttpStatus.OK.toString())

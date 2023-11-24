@@ -64,3 +64,4 @@ com\Klusterthon\Medbot\email\repository\EmailRepository.class
 com\Klusterthon\Medbot\config\SwaggerConfig.class
 com\Klusterthon\Medbot\email\dto\EmailRequest.class
 com\Klusterthon\Medbot\dto\response\AuthResponse$AuthResponseBuilder.class
+com\Klusterthon\Medbot\MedbotApplication$1.class

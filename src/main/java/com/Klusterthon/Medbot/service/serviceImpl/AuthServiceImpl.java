@@ -45,10 +45,10 @@ public class AuthServiceImpl implements AuthService {
         User foundUser = userRepository.findByEmailIgnoreCaseAndStatus(request.getEmail(),RecordStatus.ACTIVE)
                 .orElseThrow(()->new CustomException("Bad credentials",
                         HttpStatus.BAD_REQUEST));
-        Email email = emailRepository.findByUser(foundUser);
-        if(email.getStatus() == EmailStatus.NOT_VERIFIED || email.getStatus() == EmailStatus.INACTIVE){
-            throw new CustomException("Email not verified",HttpStatus.BAD_REQUEST);
-        }
+//        Email email = emailRepository.findByUser(foundUser);
+//        if(email.getStatus() == EmailStatus.NOT_VERIFIED || email.getStatus() == EmailStatus.INACTIVE){
+//            throw new CustomException("Email not verified",HttpStatus.BAD_REQUEST);
+//        }
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         AuthResponse authResponse = AuthResponse.builder()

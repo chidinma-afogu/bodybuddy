@@ -74,7 +74,7 @@ public class EmailServiceImpl implements EmailService {
             throw new CustomException("please pass in verification token", HttpStatus.BAD_REQUEST);
         }
         Email email = emailRepository.findByTokenAndStatus(token, EmailStatus.NOT_VERIFIED)
-                .orElseThrow(() -> new CustomException("Email does not exist or Email has been verified", HttpStatus.OK));
+                .orElseThrow(() -> new CustomException("Email has been verified", HttpStatus.BAD_GATEWAY));
         if (!token.equals(email.getToken())) {
             throw new CustomException("Invalid token", HttpStatus.BAD_REQUEST);
         }
