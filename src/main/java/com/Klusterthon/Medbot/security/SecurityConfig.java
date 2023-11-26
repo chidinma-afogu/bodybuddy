@@ -110,6 +110,7 @@ public class SecurityConfig {
                             .requestMatchers("/oauth/authorize/**").permitAll()
                             .requestMatchers("api/v1/email/**").permitAll()
                             .requestMatchers("swagger-ui/**").permitAll()
+                            .requestMatchers("/bot/**").permitAll()
                             .anyRequest().authenticated();
                 })
 

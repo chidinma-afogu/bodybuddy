@@ -8,7 +8,9 @@ C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbo
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\email\service\EmailService.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\security\JwtTokenProvider.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\dto\request\UserRegistrationRequest.java
+C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\dto\response\ChatGptMessage.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\exception\CustomUniqueConstraintViolationException.java
+C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\service\ChatBotService.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\service\serviceImpl\DataInitializer.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\model\User.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\model\Role.java
@@ -19,6 +21,7 @@ C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbo
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\controller\UserController.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\dto\response\UpdateUserResponse.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\model\AuditModel.java
+C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\dto\response\ChatGptResponse.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\exception\ResourceNotFoundException.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\dto\response\UserResponseBody.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\security\token\Token.java
@@ -35,14 +38,18 @@ C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbo
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\exception\GlobalExceptionHandler.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\email\entity\Email.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\security\LogoutService.java
+C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\service\serviceImpl\CustomBotServiceImpl.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\security\CustomTokenEnhancer.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\controller\EmailController.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\dto\response\AuthResponseBody.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\model\enums\EmailStatus.java
+C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\dto\request\ChatGptRequest.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\security\token\TokenType.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\exception\ResponseCodes.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\exception\UnauthException.java
+C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\controller\CustomBotController.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\email\dto\VerifyEmailResponse.java
+C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\config\OpenAIConfig.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\controller\TestController.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\config\SwaggerConfig.java
 C:\Users\chidinma.afogu\OneDrive - Africa Prudential\Desktop\IntellijCodes\Medbot\src\main\java\com\Klusterthon\Medbot\email\service\EmailServiceImpl.java

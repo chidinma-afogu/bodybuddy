@@ -1,6 +1,7 @@
 com\Klusterthon\Medbot\security\token\TokenType.class
 com\Klusterthon\Medbot\dto\response\UserResponse.class
 com\Klusterthon\Medbot\dto\response\UpdateUserResponse$UpdateUserResponseBuilder.class
+com\Klusterthon\Medbot\service\ChatBotService.class
 com\Klusterthon\Medbot\dto\request\UserRegistrationRequest$UserRegistrationRequestBuilder.class
 com\Klusterthon\Medbot\service\serviceImpl\UserServiceImpl.class
 com\Klusterthon\Medbot\exception\ExceptionHandler.class
@@ -8,11 +9,15 @@ com\Klusterthon\Medbot\email\dto\VerifyEmailResponse$VerifyEmailResponseBuilder.
 com\Klusterthon\Medbot\exception\UnauthException.class
 com\Klusterthon\Medbot\email\service\EmailService.class
 com\Klusterthon\Medbot\email\service\EmailServiceImpl.class
+com\Klusterthon\Medbot\config\OpenAIConfig.class
 com\Klusterthon\Medbot\dto\response\ApiResponse.class
 com\Klusterthon\Medbot\security\token\Token.class
+com\Klusterthon\Medbot\dto\response\ChatGptResponse$Choice.class
 com\Klusterthon\Medbot\exception\CustomAccessDeniedException.class
 com\Klusterthon\Medbot\controller\UserController.class
 com\Klusterthon\Medbot\service\UserService.class
+com\Klusterthon\Medbot\dto\response\ChatGptMessage.class
+com\Klusterthon\Medbot\dto\response\ChatGptResponse.class
 com\Klusterthon\Medbot\security\SecurityConfig.class
 com\Klusterthon\Medbot\MedbotApplication.class
 com\Klusterthon\Medbot\exception\GlobalException.class
@@ -22,6 +27,8 @@ com\Klusterthon\Medbot\service\serviceImpl\DataInitializer.class
 com\Klusterthon\Medbot\model\AuditModel.class
 com\Klusterthon\Medbot\service\AuthService.class
 com\Klusterthon\Medbot\model\enums\RecordStatus.class
+com\Klusterthon\Medbot\controller\CustomBotController.class
+com\Klusterthon\Medbot\dto\response\ChatGptMessage$ChatGptMessageBuilder.class
 com\Klusterthon\Medbot\repository\RoleRepository.class
 com\Klusterthon\Medbot\exception\CustomException.class
 com\Klusterthon\Medbot\dto\request\UpdateUserRequest.class
@@ -58,10 +65,12 @@ com\Klusterthon\Medbot\security\JwtAuthenticationEntryPoint.class
 com\Klusterthon\Medbot\model\Role$RoleBuilder.class
 com\Klusterthon\Medbot\service\serviceImpl\AuthServiceImpl.class
 com\Klusterthon\Medbot\email\dto\VerifyEmailResponse.class
+com\Klusterthon\Medbot\service\serviceImpl\CustomBotServiceImpl.class
 com\Klusterthon\Medbot\dto\response\UserResponseBody.class
 com\Klusterthon\Medbot\controller\TestController.class
 com\Klusterthon\Medbot\email\repository\EmailRepository.class
 com\Klusterthon\Medbot\config\SwaggerConfig.class
+com\Klusterthon\Medbot\dto\request\ChatGptRequest.class
 com\Klusterthon\Medbot\email\dto\EmailRequest.class
 com\Klusterthon\Medbot\dto\response\AuthResponse$AuthResponseBuilder.class
 com\Klusterthon\Medbot\MedbotApplication$1.class
