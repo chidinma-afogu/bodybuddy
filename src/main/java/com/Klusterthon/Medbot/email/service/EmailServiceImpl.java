@@ -68,6 +68,21 @@ public class EmailServiceImpl implements EmailService {
         }
     }
 
+    public ApiResponse resendEmail(EmailRequest request){
+        String subject = "Email Verification";
+        String text = "Please click the link below to verify your email";
+        sendVerificationLink(EmailRequest.builder()
+                .userEmail(request.getUserEmail())
+                .subject(subject)
+                .text(text)
+                .build());
+        return ApiResponse.builder()
+                .code(String.valueOf(HttpStatus.OK.value()))
+                .message("Email sent successfully")
+                .data(null)
+                .build();
+    }
+
     @Override
     public ApiResponse verifyEmail(String token) {
         if (token == null || token.isEmpty()) {
