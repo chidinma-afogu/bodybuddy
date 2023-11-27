@@ -42,29 +42,55 @@ public class AuthServiceImpl implements AuthService {
     private EmailRepository emailRepository;
     @Override
     public ApiResponse login(UserRegistrationRequest request) {
-        User foundUser = userRepository.findByEmailIgnoreCaseAndStatus(request.getEmail(),RecordStatus.ACTIVE)
-                .orElseThrow(()->new CustomException("Bad credentials",
-                        HttpStatus.BAD_REQUEST));
-//        Email email = emailRepository.findByUser(foundUser);
-//        if(email.getStatus() == EmailStatus.NOT_VERIFIED || email.getStatus() == EmailStatus.INACTIVE){
-//            throw new CustomException("Email not verified",HttpStatus.BAD_REQUEST);
-//        }
+        // Retrieve the user based on the provided email
+        User foundUser = userRepository.findByEmailIgnoreCaseAndStatus(request.getEmail(), RecordStatus.ACTIVE)
+                .orElseThrow(() -> new CustomException("Bad credentials", HttpStatus.BAD_REQUEST));
+
+        // Authenticate the user's credentials
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        AuthResponse authResponse = AuthResponse.builder()
-                .responseCode(String.valueOf(HttpStatus.OK))
-                .responseMessage("Token successfully generated")
-                .body(AuthResponseBody.builder()
-                        .accessToken(jwtTokenProvider.generateToken(authentication))
-                        .userRole(foundUser.getRole())
-                        .build())
-                .build();
-        ApiResponse apiResponse = new ApiResponse(HttpStatus.OK.toString(),
-                authResponse.getResponseMessage(),authResponse.getBody(),HttpStatus.OK);
-        revokeAllUserTokens(foundUser);
-        saveUserToken(authentication, foundUser);
-        return apiResponse;
+
+        // Generate the access token
+        String accessToken = jwtTokenProvider.generateToken(authentication);
+
+        // Check if token generation succeeded before proceeding
+        if (accessToken != null && !accessToken.isEmpty()) {
+            // Revoke existing user tokens and save new token
+            revokeAllUserTokens(foundUser);
+            saveUserToken(authentication, foundUser);
+
+            // Construct the response body
+            AuthResponseBody responseBody = AuthResponseBody.builder()
+                    .accessToken(accessToken)
+                    .userRole(foundUser.getRole())
+                    .user(User.builder()
+                            .status(foundUser.getStatus())
+                            .id(foundUser.getId())
+                            .additionalInfo(foundUser.getAdditionalInfo())
+                            .gender(foundUser.getGender())
+                            .age(foundUser.getAge())
+                            .email(foundUser.getEmail())
+                            .firstName(foundUser.getFirstName())
+                            .lastName(foundUser.getLastName())
+                            .bloodGroup(foundUser.getBloodGroup())
+                            .build())
+                    .build();
+
+            // Construct and return the ApiResponse
+            AuthResponse authResponse = AuthResponse.builder()
+                    .responseCode(String.valueOf(HttpStatus.OK))
+                    .responseMessage("Token successfully generated")
+                    .body(responseBody)
+                    .build();
+
+            return new ApiResponse(HttpStatus.OK.toString(), authResponse.getResponseMessage(), authResponse.getBody(), HttpStatus.OK);
+        } else {
+            // Handle token generation failure
+            return new ApiResponse(HttpStatus.UNAUTHORIZED.toString(), "Failed to generate token", null, HttpStatus.UNAUTHORIZED);
+        }
     }
+
+
 
 
     private void saveUserToken(Authentication authentication, User foundUser) {
