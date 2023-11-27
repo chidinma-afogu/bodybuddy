@@ -49,9 +49,9 @@ public class EmailServiceImpl implements EmailService {
                 .orElseThrow(() -> new CustomException("Email does not exist", HttpStatus.BAD_REQUEST));
         email.setToken(verificationToken);
         emailRepository.save(email);
-        String baseUrl = "https://bodybuddy.onrender.com";
+        String baseUrl = "https://trybodybuddy.netlify.app/";
 
-        String verificationLink = baseUrl + "/api/v1/email?token=" + verificationToken;
+        String verificationLink = baseUrl +"email-verified/"+ verificationToken;
         try {
             MimeMessage message = mailSender.createMimeMessage();
             var messageHelper = new MimeMessageHelper(message);
